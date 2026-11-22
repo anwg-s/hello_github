@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Git 与 GitHub 速查卡</title>
+<style>
+  :root{
+    --red:#b3202a;
+    --red-soft:#f9ecec;
+    --ink:#1f2328;
+    --ink-2:#57606a;
+    --line:#e5e7eb;
+    --bg:#ffffff;
+    --paper:#fbfafa;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:48px 20px 64px;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,"Segoe UI",sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:880px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:56px 56px 48px;}
+  header{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:36px;}
+  .kicker{font-size:12px;letter-spacing:.22em;color:var(--red);font-weight:600;text-transform:uppercase;}
+  h1{font-size:34px;line-height:1.3;margin:10px 0 8px;font-weight:700;letter-spacing:-.01em;}
+  .sub{font-size:14px;color:var(--ink-2);margin:0;}
+  h2{
+    font-size:19px;margin:44px 0 18px;font-weight:700;
+    padding-left:12px;border-left:4px solid var(--red);line-height:1.4;
+  }
+  p{margin:0 0 14px;font-size:15px;}
+  .lead{font-size:15px;color:var(--ink-2);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .card{
+    border:1px solid var(--line);border-radius:3px;padding:16px 18px;background:#fff;
+  }
+  .card .term{font-weight:700;font-size:15px;margin-bottom:4px;}
+  .card .term span{color:var(--red);}
+  .card .desc{font-size:13.5px;color:var(--ink-2);line-height:1.7;}
+  table{width:100%;border-collapse:collapse;margin:6px 0 8px;font-size:14px;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-weight:600;background:var(--red-soft);color:var(--ink);border-bottom:1px solid #eddcdc;}
+  td code{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:13px;background:#f4f5f7;border:1px solid #e9eaec;border-radius:3px;padding:1px 6px;color:#24292f;white-space:nowrap;}
+  td .note{color:var(--ink-2);font-size:13.5px;}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:0;}
+  .steps li{
+    position:relative;padding:12px 0 12px 44px;border-bottom:1px dashed var(--line);font-size:14.5px;
+  }
+  .steps li:last-child{border-bottom:none;}
+  .steps li::before{
+    counter-increment:s;content:counter(s);
+    position:absolute;left:0;top:11px;width:26px;height:26px;border-radius:50%;
+    background:var(--red);color:#fff;font-size:13px;font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .warn{border-left:3px solid var(--red);background:var(--red-soft);padding:14px 18px;font-size:14px;color:#5c1a20;margin:18px 0;}
+  .warn b{color:var(--red);}
+  footer{margin-top:48px;border-top:1px solid var(--line);padding-top:16px;font-size:12.5px;color:var(--ink-2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  @media (max-width:720px){
+    body{padding:20px 12px 40px;}
+    .wrap{padding:28px 22px;}
+    h1{font-size:26px;}
+    .grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Quick Reference</div>
+    <h1>Git 与 GitHub 速查卡</h1>
+    <p class="sub">王恒强 · 信息与计算科学 · 学习记录　｜　更新于 2026-11-22</p>
+  </header>
+
+  <p class="lead">这张卡片把概念、图形界面、命令行三部分压在一张纸上。忘了就翻，不用重学。</p>
+
+  <h2>一、先分清两个东西</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="term"><span>Git</span></div>
+      <div class="desc">装在你电脑上的版本记录工具。像游戏存档，每次改动存一份，随时能回到上一版。</div>
+    </div>
+    <div class="card">
+      <div class="term"><span>GitHub</span></div>
+      <div class="desc">云端网站，用来存放 Git 仓库。像网盘 + 协作平台 + 作品展示页。</div>
+    </div>
+  </div>
+
+  <h2>二、五个核心词</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="term">仓库 Repository</div>
+      <div class="desc">一个被 Git 管理的项目文件夹。仓库就是普通文件夹，只是 Git 在盯着它。</div>
+    </div>
+    <div class="card">
+      <div class="term">提交 Commit</div>
+      <div class="desc">一次存档，带一句说明「我改了什么」。存在本地，还没上传。</div>
+    </div>
+    <div class="card">
+      <div class="term">分支 Branch</div>
+      <div class="desc">从主线复印一份草稿。随便改，改坏了扔掉，正本不受影响。</div>
+    </div>
+    <div class="card">
+      <div class="term">推送 / 拉取 Push / Pull</div>
+      <div class="desc">Push 把本地存档传上云端；Pull 把云端最新拉回本地。↑ 是你没传的，↓ 是你没拉的。</div>
+    </div>
+    <div class="card">
+      <div class="term">PR · Pull Request</div>
+      <div class="desc">请求把草稿合并进主线。合并前可以先看改了哪些地方、要不要讨论。</div>
+    </div>
+    <div class="card">
+      <div class="term">README</div>
+      <div class="desc">仓库首页的说明文件。别人点进来第一眼看到的，就是它。</div>
+    </div>
+  </div>
+
+  <h2>三、图形界面：三步循环</h2>
+  <ol class="steps">
+    <li><b>改文件</b> —— 在仓库文件夹里编辑、新建、删除文件。</li>
+    <li><b>Commit</b> —— 左下角 Summary 填说明，点 Commit 存档到本地。</li>
+    <li><b>Push</b> —— 右上角点 Push origin 传到云端（新分支第一次是 Publish branch）。</li>
+  </ol>
+  <p style="font-size:13.5px;color:var(--ink-2);">右边按钮出现 ↓1，说明云端有新内容，点 Pull origin 拉下来。</p>
+
+  <h2>四、命令行常用命令</h2>
+  <table>
+    <tr><th style="width:44%">命令</th><th>作用</th></tr>
+    <tr><td><code>cd 路径</code></td><td class="note">进入某个文件夹</td></tr>
+    <tr><td><code>git status</code></td><td class="note">看当前分支和有没有改动，动手前先看一眼</td></tr>
+    <tr><td><code>git add 文件</code></td><td class="note">把文件放进待存档清单</td></tr>
+    <tr><td><code>git commit -m "说明"</code></td><td class="note">存档到本地（说明先用英文）</td></tr>
+    <tr><td><code>git push</code></td><td class="note">上传到 GitHub</td></tr>
+    <tr><td><code>git pull</code></td><td class="note">拉取云端最新内容</td></tr>
+    <tr><td><code>git log --oneline</code></td><td class="note">看历史记录，每条一行；出现 (END) 按 q 退出</td></tr>
+    <tr><td><code>git restore 文件</code></td><td class="note">丢弃还没存档的改动</td></tr>
+    <tr><td><code>git reset --soft HEAD~1</code></td><td class="note">撤销最近一次提交，改动内容保留</td></tr>
+    <tr><td><code>git revert 编号</code></td><td class="note">抵消一次已经上传的提交，不破坏历史</td></tr>
+    <tr><td><code>git clone 网址</code></td><td class="note">把整个仓库下载到本地</td></tr>
+    <tr><td><code>git switch 分支</code></td><td class="note">切换分支</td></tr>
+    <tr><td><code>git switch -c 新分支</code></td><td class="note">新建一个分支并切过去</td></tr>
+  </table>
+
+  <h2>五、改错了怎么办</h2>
+  <table>
+    <tr><th style="width:36%">情况</th><th>做法</th></tr>
+    <tr><td>改了还没 commit</td><td class="note"><code>git restore 文件</code> 直接回到上次存档的样子</td></tr>
+    <tr><td>commit 了还没 push</td><td class="note"><code>git reset --soft HEAD~1</code> 撤掉存档，改动还在</td></tr>
+    <tr><td>已经 push 了</td><td class="note"><code>git revert 编号</code> 生成一次「反悔提交」，不要强推</td></tr>
+    <tr><td>图形界面里</td><td class="note">History 标签里右键某条记录，有 Undo 和 Revert</td></tr>
+  </table>
+
+  <div class="warn">
+    <b>两条底线：</b>第一，密码、密钥、API Key 永远不要传上公开仓库，git 会永久保留历史。第二，已经被别人拉取过的提交，不要用 reset 强推，会把别人的仓库搞坏。
+  </div>
+
+  <h2>六、不该上传的东西</h2>
+  <p style="font-size:14.5px;">在仓库根目录放一个 <code style="font-family:Consolas,monospace;background:#f4f5f7;border:1px solid #e9eaec;border-radius:3px;padding:1px 6px;">.gitignore</code> 文件，把不需要跟代码走的东西写进去：模型权重（*.pt、*.onnx）、数据集（data/）、训练输出（runs/）、Python 缓存（__pycache__/）、打包产物（build/、dist/）。</p>
+
+  <h2>七、我的仓库</h2>
+  <table>
+    <tr><th style="width:40%">仓库</th><th>内容</th></tr>
+    <tr><td>hello_github</td><td class="note">Git 基础流程练习，含个人主页练习页</td></tr>
+    <tr><td>aic-vision-system</td><td class="note">YOLO11n-cls 工件缺陷分类 + Tkinter 界面 + TCP 与 PLC 通信</td></tr>
+  </table>
+
+  <footer>
+    <span>Git &amp; GitHub 学习笔记 · 2026 年 11 月</span>
+    <span>每周复盘：我做了什么，还要做什么</span>
+  </footer>
+
+</div>
+</body>
+</html>
